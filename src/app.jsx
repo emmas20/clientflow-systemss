@@ -409,6 +409,7 @@ export default function App() {
             <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
+            <a href="https://www.instagram.com/zoroliq/" target="_blank" rel="noopener noreferrer" aria-label="ZOROLIQ on Instagram">Instagram ↗</a>
           </div>
           <p>© {new Date().getFullYear()} ZOROLIQ · Calgary, Alberta · Serving Canada</p>
         </div>
