@@ -289,9 +289,8 @@ const QUICK_REPLIES = [
   { q: "What do you build?", a: "Custom websites, booking systems, AI-assisted automations and dashboards — built as one connected system, not separate pieces." },
   { q: "How much does it cost?", a: "Simple sites start from $450. Connected website + booking systems start from $850. Full custom automation systems start from $1,250." },
   { q: "Can you connect my tools?", a: "Yes — Google Sheets, Gmail, Calendar, n8n, Zapier and most booking or CRM tools can be connected into one workflow." },
-  { q: "Do you work outside Calgary?", a: "Yes. We're based in Calgary and work with service businesses remotely across Canada." },
-];
-
+  { q: "Do you work outside Calgary?", a: "Yes. We're based in Calgary and work with service businesses remotely, anywhere in the world." },
+]
 const REEL_DURATION = 4200;
 
 /* ============================== SMALL PIECES ============================== */
@@ -750,7 +749,7 @@ const [launcherVisible, setLauncherVisible] = useState(false);
       <main id="top">
         <section className="hero wrap">
           <div className="hero-copy">
-            <div className="eyebrow"><span /> Calgary-built · Serving businesses across Canada</div>
+            <div className="eyebrow"><span /> Calgary-built · Serving businesses worldwide</div>
             <h1>
               Your business should{" "}
               <span className="cycle-wrap">
@@ -1044,7 +1043,7 @@ const [launcherVisible, setLauncherVisible] = useState(false);
               <div className="contact-notes">
                 <span>✓ No-obligation consultation</span>
                 <span>✓ Custom recommendation</span>
-                <span>✓ Calgary + remote across Canada</span>
+                <span>✓ Calgary-based, remote worldwide</span>
               </div>
             </div>
 
@@ -1079,7 +1078,7 @@ const [launcherVisible, setLauncherVisible] = useState(false);
             <a href="#contact">Contact</a>
             <a href="https://www.instagram.com/zoroliq/" target="_blank" rel="noopener noreferrer" aria-label="Zoroliq on Instagram">Instagram ↗</a>
           </div>
-          <p>© {new Date().getFullYear()} ZOROLIQ · Calgary, Alberta · Serving Canada</p>
+          <p>© {new Date().getFullYear()} ZOROLIQ · Calgary, Alberta · Serving clients worldwide</p>
         </div>
       </footer>
 
