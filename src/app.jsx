@@ -383,7 +383,7 @@ function Counter({ to, suffix = "" }) {
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.15 }
     );
     observer.observe(el);
     return () => observer.disconnect();

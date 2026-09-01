@@ -358,9 +358,9 @@
   .hero-copy > p.lede { font-size: 17px; }
   .hero-actions { flex-direction: column; }
   .button { width: 100%; }
-  .hero-proof { grid-template-columns: 1fr; gap: 13px; }
-  .hero-proof div { grid-template-columns: 38px 1fr; align-items: center; }
-  .hero-proof small { grid-column: 2; }
+  .hero-proof { grid-template-columns: 1fr; gap: 18px; }
+.hero-proof div { grid-template-columns: 1fr; align-items: start; gap: 4px; }
+.hero-proof small { grid-column: 1; }
   .preview-route { grid-template-columns: 1fr; gap: 8px; }
   .route-line { transform: rotate(90deg); height: 16px; width: 2px; margin: 0 auto; }
   .route-card { min-height: 90px; }
