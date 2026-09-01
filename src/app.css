@@ -292,11 +292,11 @@
 .mock-cal-head span { font-family: var(--font-mono); font-size: 10px; color: var(--muted-2); }
 .mock-cal-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
 .cal-slot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 9px 10px; border-radius: 10px; font-size: 11.5px; color: var(--muted-2); border: 1px solid transparent; }
-.cal-slot span { font-family: var(--font-mono); font-size: 10px; width: 42px; flex: none; }
+.cal-slot > span:first-child { font-family: var(--font-mono); font-size: 10px; width: 42px; flex: none; }
 .cal-slot.new { background: linear-gradient(150deg, rgba(110,186,255,.16), rgba(99,90,255,.09)); border-color: rgba(112,175,255,.32); color: #dfe9ff; padding: 11px 12px; opacity: 0; transform: translateX(-8px); }
 .reel-scene.active .cal-slot.new { animation: slotIn .45s ease forwards; }
 @keyframes slotIn { to { opacity: 1; transform: translateX(0); } }
-.cal-chip { margin-left: auto; font-family: var(--font-mono); font-size: 9px; background: rgba(91,232,166,.16); color: var(--signal); border: 1px solid rgba(91,232,166,.3); padding: 3px 7px; border-radius: 999px; flex: none; }
+.cal-slot .cal-chip { margin-left: auto; font-family: var(--font-mono); font-size: 9px; background: rgba(91,232,166,.16); color: var(--signal); border: 1px solid rgba(91,232,166,.3); padding: 3px 7px; border-radius: 999px; flex: none; width: auto; white-space: nowrap; display: inline-block; }
 .cal-note { font-size: 10.5px; color: var(--muted-2); padding: 2px 12px 12px; }
 .mock-sheet-head { display: grid; grid-template-columns: 1.3fr 1fr .9fr .8fr; gap: 6px; padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,.08); font-family: var(--font-mono); font-size: 9px; color: var(--muted-2); letter-spacing: .06em; }
 .mock-sheet-body { display: flex; flex-direction: column; }
@@ -318,7 +318,7 @@
 .reel-step-card { display: flex; gap: 16px; padding: 16px; border-radius: 16px; border: 1px solid var(--line); cursor: pointer; transition: border-color .2s ease, background .2s ease; }
 .reel-step-card:hover { background: rgba(255,255,255,.02); }
 .reel-step-card.active { border-color: rgba(127,227,255,.4); background: linear-gradient(150deg, rgba(107,146,255,.1), rgba(16,24,46,.4)); }
-.reel-step-num { font-family: var(--font-mono); font-size: 11px; color: var(--muted-2); flex: none; width: 22px; padding-top: 2px; }
+.reel-step-num { font-family  : var(--font-mono); font-size: 11px; color: var(--muted-2); flex: none; width: 22px; padding-top: 2px; }
 .reel-step-card.active .reel-step-num { color: var(--cyan); }
 .reel-step-card h4 { font-family: "Manrope"; font-size: 14.5px; margin: 0 0 5px; }
 .reel-step-card p { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin: 0; }

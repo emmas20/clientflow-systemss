@@ -404,6 +404,7 @@ export default function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [form, setForm] = useState({ name: "", businessType: "", contact: "", message: "" });
   const [headerScrolled, setHeaderScrolled] = useState(false);
+const [launcherVisible, setLauncherVisible] = useState(false);
   const [activeNav, setActiveNav] = useState("");
   const [cycleWord, setCycleWord] = useState("flow");
   const [cycleAnimClass, setCycleAnimClass] = useState("");
@@ -454,8 +455,9 @@ export default function App() {
   /* ---- header scroll state ---- */
   useEffect(() => {
     function onScroll() {
-      setHeaderScrolled(window.scrollY > 12);
-    }
+  setHeaderScrolled(window.scrollY > 12);
+  setLauncherVisible(window.scrollY > 440);
+}
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -1082,9 +1084,9 @@ export default function App() {
       </footer>
 
       <button
-        className="chat-launcher"
-        type="button"
-        aria-label="Open Zoroliq AI assistant demo"
+  className={`chat-launcher${launcherVisible ? " visible" : ""}`}
+  type="button"
+  aria-label="Open Zoroliq AI assistant demo"
         aria-expanded={chatOpen}
         onClick={openChat}
       >
