@@ -389,3 +389,13 @@
   .chat-launcher { right: 16px; bottom: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } .reveal, .reveal-stagger > * { opacity: 1 !important; transform: none !important; } }
+/* Ready-made booking software section */
+.booking-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 50px; max-width: 860px; }
+.price-card.compact { min-height: 0; }
+.price-card h3 small { font-size: 15px; font-weight: 600; color: #8f9db3; letter-spacing: 0; }
+.booking-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.booking-industries-label { margin-top: 40px; color: #8f9db3; font-size: 13px; }
+.booking-industries { margin-top: 14px; }
+.industry-cloud a { border: 1px solid var(--line); background: rgba(255,255,255,.025); border-radius: 999px; padding: 13px 18px; color: #aab7ca; font-size: 13px; text-decoration: none; transition: border-color .2s ease, color .2s ease; }
+.industry-cloud a:hover { border-color: rgba(127,227,255,.35); color: white; }
+@media (max-width: 760px) { .booking-grid { grid-template-columns: 1fr; } }

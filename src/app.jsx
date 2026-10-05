@@ -295,6 +295,33 @@ const REEL_DURATION = 4200;
 
 /* ============================== SMALL PIECES ============================== */
 
+// Ready-made booking software (app.zoroliq.com), shown for visitors who
+// only need a booking system rather than a custom build.
+const bookingPlans = [
+  {
+    name: "BOOKING BASE",
+    price: "$49",
+    description: "For solo providers and small studios.",
+    features: ["Your own branded booking page", "Deposits to stop no-shows", "Automatic confirmations and reminders", "Consent and intake forms", "Waitlist and one-tap checkout", "Up to 2 staff"],
+  },
+  {
+    name: "BOOKING PRO",
+    price: "$99",
+    featured: true,
+    description: "For growing teams that need more control.",
+    features: ["Everything in Base", "Unlimited staff", "Team logins with roles", "Reports", "Per-client deposit rules", "Premium booking page styles"],
+  },
+];
+
+const bookingIndustries = [
+  ["Med spas", "med-spas"],
+  ["Lash & brow studios", "lash-and-brow-studios"],
+  ["Hair salons", "hair-salons"],
+  ["Nail salons", "nail-salons"],
+  ["Barbershops", "barbershops"],
+  ["Massage & wellness", "massage-therapists"],
+];
+
 function Mark({ compact = false }) {
   return (
     <svg className={compact ? "brand-mark compact" : "brand-mark"} viewBox="0 0 84 84" role="img" aria-label="Zoroliq logo">
@@ -464,7 +491,7 @@ const [launcherVisible, setLauncherVisible] = useState(false);
 
   /* ---- nav scroll-spy ---- */
   useEffect(() => {
-    const ids = ["services", "automations", "process", "pricing", "faq"];
+    const ids = ["services", "automations", "process", "booking-software", "pricing", "faq"];
     const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
     if (!sections.length) return;
     const observer = new IntersectionObserver(
@@ -739,6 +766,7 @@ const [launcherVisible, setLauncherVisible] = useState(false);
             <a href="#services" className={activeNav === "services" ? "active" : ""} onClick={() => setMobileOpen(false)}>Services</a>
             <a href="#automations" className={activeNav === "automations" ? "active" : ""} onClick={() => setMobileOpen(false)}>Automations</a>
             <a href="#process" className={activeNav === "process" ? "active" : ""} onClick={() => setMobileOpen(false)}>Process</a>
+            <a href="#booking-software" className={activeNav === "booking-software" ? "active" : ""} onClick={() => setMobileOpen(false)}>Booking app</a>
             <a href="#pricing" className={activeNav === "pricing" ? "active" : ""} onClick={() => setMobileOpen(false)}>Pricing</a>
             <a href="#faq" className={activeNav === "faq" ? "active" : ""} onClick={() => setMobileOpen(false)}>FAQ</a>
             <a className="nav-cta" href="#contact" onClick={() => setMobileOpen(false)}>Get a custom plan</a>
@@ -993,6 +1021,42 @@ const [launcherVisible, setLauncherVisible] = useState(false);
           </Reveal>
         </section>
 
+        <section id="booking-software" className="section wrap booking-software-section">
+          <Reveal className="section-heading split-heading">
+            <div>
+              <p className="section-kicker">ZOROLIQ BOOKING</p>
+              <h2>Just need a booking system? Use ours.</h2>
+            </div>
+            <p>ZOROLIQ Booking is ready-made online booking software for salons, med spas, lash studios, barbers and clinics. Set it up yourself in an afternoon, no custom build needed.</p>
+          </Reveal>
+
+          <Reveal stagger className="booking-grid">
+            {bookingPlans.map((plan) => (
+              <article className={plan.featured ? "price-card compact featured" : "price-card compact"} key={plan.name}>
+                {plan.featured && <div className="popular-label">MOST POPULAR</div>}
+                <p className="price-name">{plan.name}</p>
+                <h3>{plan.price}<small> /month</small></h3>
+                <p>{plan.description}</p>
+                <ul>{plan.features.map((feature) => <li key={feature}><span>✓</span>{feature}</li>)}</ul>
+                <a href="https://app.zoroliq.com/signup">Start a 14-day free trial <span>↗</span></a>
+              </article>
+            ))}
+          </Reveal>
+
+          <div className="booking-actions">
+            <a className="button primary" href="https://app.zoroliq.com">See ZOROLIQ Booking <span>↗</span></a>
+            <a className="button secondary" href="https://app.zoroliq.com/book/zoroliq-demo" target="_blank" rel="noreferrer">Try the demo booking page</a>
+          </div>
+
+          <p className="booking-industries-label">Booking software for:</p>
+          <div className="industry-cloud booking-industries">
+            {bookingIndustries.map(([label, slug]) => (
+              <a key={slug} href={`https://app.zoroliq.com/booking-software/${slug}`}>{label}</a>
+            ))}
+          </div>
+          <p className="pricing-footnote">Founding price for the first 30 studios, locked in for life. Need something fully custom instead? See the custom builds below.</p>
+        </section>
+
         <section id="pricing" className="section wrap pricing-section">
           <Reveal className="section-heading">
             <p className="section-kicker">STARTING PRICES</p>
@@ -1073,6 +1137,7 @@ const [launcherVisible, setLauncherVisible] = useState(false);
           <div className="footer-links">
             <a href="#services">Services</a>
             <a href="#automations">Automations</a>
+            <a href="#booking-software">Booking app</a>
             <a href="#pricing">Pricing</a>
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
