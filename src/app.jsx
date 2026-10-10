@@ -302,18 +302,27 @@ const bookingPlans = [
     name: "BOOKING BASE",
     price: "$49",
     description: "For solo providers and small studios.",
-    features: ["Your own branded booking page", "Deposits to stop no-shows", "Automatic confirmations and reminders", "Consent and intake forms", "Waitlist and one-tap checkout", "Up to 2 staff"],
+    features: ["Your own branded booking page", "Booking right on your website", "Card on file + one-click no-show fees", "Deposits, add-ons and “from $” pricing", "Automatic confirmations and reminders", "Consent and intake forms", "Checkout: charge saved cards, tips and receipts", "Up to 2 staff"],
   },
   {
     name: "BOOKING PRO",
     price: "$99",
     featured: true,
     description: "For growing teams that need more control.",
-    features: ["Everything in Base", "Unlimited staff", "Team logins with roles", "Reports", "Per-client deposit rules", "Premium booking page styles"],
+    features: ["Everything in Base", "Unlimited staff", "Team logins with roles", "No-show and cancellation reports", "Per-client deposit rules", "Premium booking page styles", "No ZOROLIQ badge", "Priority support"],
   },
 ];
 
+// What's new / standout features, shown as highlight cards.
+const bookingHighlights = [
+  ["No-show protection", "Clients save a card when they book. Missed appointment? Charge your fee in one click."],
+  ["Add-ons", "Nail art, tints or a hand massage added right under the service, with price and time added automatically."],
+  ["Book on your website", "Paste one code into Wix, Squarespace or WordPress, or link each service’s Book button."],
+  ["Get paid in one tap", "Charge the card on file at checkout with tip, tax and an emailed receipt."],
+];
+
 const bookingIndustries = [
+  ["Swim schools", "swim-schools"],
   ["Med spas", "med-spas"],
   ["Lash & brow studios", "lash-and-brow-studios"],
   ["Hair salons", "hair-salons"],
@@ -1027,7 +1036,17 @@ const [launcherVisible, setLauncherVisible] = useState(false);
               <p className="section-kicker">ZOROLIQ BOOKING</p>
               <h2>Just need a booking system? Use ours.</h2>
             </div>
-            <p>ZOROLIQ Booking is ready-made online booking software for salons, med spas, lash studios, barbers and clinics. Set it up yourself in an afternoon, no custom build needed.</p>
+            <p>ZOROLIQ Booking is ready-made online booking software for salons, med spas, lash studios, barbers, clinics and swim schools. Set it up yourself in an afternoon, with a free setup call if you want a hand.</p>
+          </Reveal>
+
+          <Reveal stagger className="booking-highlights">
+            {bookingHighlights.map(([title, text]) => (
+              <article className="booking-highlight" key={title}>
+                <span className="booking-highlight-dot" aria-hidden="true" />
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
           </Reveal>
 
           <Reveal stagger className="booking-grid">
@@ -1054,7 +1073,7 @@ const [launcherVisible, setLauncherVisible] = useState(false);
               <a key={slug} href={`https://app.zoroliq.com/booking-software/${slug}`}>{label}</a>
             ))}
           </div>
-          <p className="pricing-footnote">Founding price for the first 30 studios, locked in for life. Need something fully custom instead? See the custom builds below.</p>
+          <p className="pricing-footnote">Founding price for the first 30 studios, locked in for life. Every plan includes a free 20-minute setup call. Need something fully custom instead? See the custom builds below.</p>
         </section>
 
         <section id="pricing" className="section wrap pricing-section">
