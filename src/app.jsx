@@ -94,6 +94,12 @@ const ICONS = {
       <path d="M12 14v3M12 14l2 1.2" />
     </>
   ),
+  mail: (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    </>
+  ),
   star: <path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />,
   sync: (
     <>
@@ -190,6 +196,46 @@ const NODES = [
       ["The week wraps up", "Data pulled from every connected tool"],
       ["Dashboard refreshes automatically", "Tableau or a live Sheets report"],
       ["Snapshot emailed Monday at 8am", "Leads, bookings and revenue in one view"],
+    ],
+  },
+  {
+    icon: "mail",
+    title: "AI Email Replies",
+    tag: "An inbox that answers itself.",
+    trace: [
+      ["An inquiry lands in your inbox", "Quotes, availability, general questions"],
+      ["AI drafts a reply in your voice", "Using your services, prices and policies"],
+      ["Sent automatically or held for one-click approval", "Anything unusual is flagged to you"],
+    ],
+  },
+  {
+    icon: "chat",
+    title: "Instagram & DM Auto-Replies",
+    tag: "Answer every DM, day or night.",
+    trace: [
+      ["Someone messages or comments", "Instagram, Facebook or your website chat"],
+      ["AI answers the question instantly", "Hours, pricing, services, location"],
+      ["Sends them your booking link", "Hot leads are flagged straight to your phone"],
+    ],
+  },
+  {
+    icon: "bolt",
+    title: "AI Lead Qualification",
+    tag: "Know which leads to call first.",
+    trace: [
+      ["A new lead comes in", "From a form, chat or email"],
+      ["AI sorts it by service, budget and urgency", "Spam and tire-kickers filtered out"],
+      ["Best leads land at the top of your tracker", "With a short summary of what they want"],
+    ],
+  },
+  {
+    icon: "sync",
+    title: "Smart Follow-ups & Rebooking",
+    tag: "Bring past clients back automatically.",
+    trace: [
+      ["A client has not booked in a while", "Based on the service they usually book"],
+      ["AI writes a friendly check-in", "Personal, not a mass blast"],
+      ["One-tap link to rebook", "Replies are handled or routed to you"],
     ],
   },
   {
@@ -302,14 +348,14 @@ const bookingPlans = [
     name: "BOOKING BASE",
     price: "$49",
     description: "For solo providers and small studios.",
-    features: ["Your own branded booking page", "Booking right on your website", "Card on file + one-click no-show fees", "Deposits, add-ons and “from $” pricing", "Automatic confirmations and reminders", "Consent and intake forms", "Checkout: charge saved cards, tips and receipts", "Up to 2 staff"],
+    features: ["Your own branded booking page", "Booking right on your website", "Card on file + one-click no-show fees", "Deposits, add-ons and “from $” pricing", "Automatic confirmations and reminders", "Consent and intake forms", "Waitlist for fully booked days", "Checkout: charge saved cards, tips and receipts", "Optional AI add-ons (chatbot, email replies)", "Up to 2 staff"],
   },
   {
     name: "BOOKING PRO",
     price: "$99",
     featured: true,
     description: "For growing teams that need more control.",
-    features: ["Everything in Base", "Unlimited staff", "Team logins with roles", "No-show and cancellation reports", "Per-client deposit rules", "Premium booking page styles", "No ZOROLIQ badge", "Priority support"],
+    features: ["Everything in Base", "Unlimited staff", "Team logins with roles", "No-show and cancellation reports", "Per-client deposit rules", "Premium booking page styles", "No ZOROLIQ badge", "Priority support", "Optional AI add-ons (chatbot, email replies)"],
   },
 ];
 
@@ -319,10 +365,23 @@ const bookingHighlights = [
   ["Add-ons", "Nail art, tints or a hand massage added right under the service, with price and time added automatically."],
   ["Book on your website", "Paste one code into Wix, Squarespace or WordPress, or link each service’s Book button."],
   ["Get paid in one tap", "Charge the card on file at checkout with tip, tax and an emailed receipt."],
+  ["Automatic reminders", "Confirmations and reminders go out on their own, so fewer clients forget and your calendar stays full."],
+  ["Consent & intake forms", "Collect signed consent and intake details before the appointment, not at the front desk."],
+  ["Waitlist", "Fully booked? Clients can join the waitlist so a cancelled slot can be filled."],
+  ["Team logins & reports", "Give each staff member their own login with roles, and see no-show and cancellation reports on Pro."],
+];
+
+// Optional AI extras Zoroliq sets up and connects for booking clients.
+const bookingAiAddons = [
+  ["AI chat assistant", "A chatbot on your website and booking page that answers service, pricing and availability questions, then guides visitors to book."],
+  ["AI email replies", "Drafts replies to inquiries in your voice, or sends them automatically for common questions, with anything unusual flagged for you."],
+  ["Instagram & DM auto-replies", "Answers DMs and comments in seconds, day or night, and sends people straight to your booking link."],
+  ["Smart reminders & rebooking", "Personalized reminders, follow-ups and time-for-your-next-visit messages timed to each client's service."],
+  ["Review requests", "After a visit, a friendly message asks happy clients for a review and routes unhappy feedback to you privately."],
+  ["Lead qualification", "AI sorts new inquiries by service and urgency and sends the hot ones straight to your phone."],
 ];
 
 const bookingIndustries = [
-  ["Swim schools", "swim-schools"],
   ["Med spas", "med-spas"],
   ["Lash & brow studios", "lash-and-brow-studios"],
   ["Hair salons", "hair-salons"],
@@ -1036,11 +1095,26 @@ const [launcherVisible, setLauncherVisible] = useState(false);
               <p className="section-kicker">ZOROLIQ BOOKING</p>
               <h2>Just need a booking system? Use ours.</h2>
             </div>
-            <p>ZOROLIQ Booking is ready-made online booking software for salons, med spas, lash studios, barbers, clinics and swim schools. Set it up yourself in an afternoon, with a free setup call if you want a hand.</p>
+            <p>ZOROLIQ Booking is ready-made online booking software for salons, med spas, lash studios, barbers, clinics and wellness studios. Set it up yourself in an afternoon, add optional AI like a website chatbot and automatic email replies, and get a free setup call if you want a hand.</p>
           </Reveal>
 
           <Reveal stagger className="booking-highlights">
             {bookingHighlights.map(([title, text]) => (
+              <article className="booking-highlight" key={title}>
+                <span className="booking-highlight-dot" aria-hidden="true" />
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
+          </Reveal>
+
+          <div className="booking-ai-head">
+            <p className="section-kicker">AI ADD-ONS</p>
+            <h3>Add AI to your booking page</h3>
+            <p>Optional extras that Zoroliq sets up and connects for you, so your bookings, inbox and DMs keep moving without you.</p>
+          </div>
+          <Reveal stagger className="booking-highlights ai-addons">
+            {bookingAiAddons.map(([title, text]) => (
               <article className="booking-highlight" key={title}>
                 <span className="booking-highlight-dot" aria-hidden="true" />
                 <h3>{title}</h3>
