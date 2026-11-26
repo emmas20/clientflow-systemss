@@ -30,7 +30,7 @@ const services = [
     number: "03",
     title: "Business & AI automation",
     text: "Connect the tools you already use so repetitive admin work happens automatically and leads are followed up with faster — see the full list below.",
-    bullets: ["Email and SMS workflows", "Lead notifications", "Follow-up and reminder automations", "n8n, Zapier and AI-assisted builds"],
+    bullets: ["Email workflows", "Lead notifications", "Follow-up and reminder automations", "n8n, Zapier and AI-assisted builds"],
   },
   {
     number: "04",
@@ -234,7 +234,7 @@ const NODES = [
     tag: "Bring past clients back automatically.",
     trace: [
       ["A client has not booked in a while", "Based on the service they usually book"],
-      ["AI writes a friendly check-in", "Personal, not a mass blast"],
+      ["AI writes a friendly email check-in", "Personal, not a mass blast"],
       ["One-tap link to rebook", "Replies are handled or routed to you"],
     ],
   },
@@ -1235,6 +1235,8 @@ const [launcherVisible, setLauncherVisible] = useState(false);
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
             <a href="https://www.instagram.com/zoroliq/" target="_blank" rel="noopener noreferrer" aria-label="Zoroliq on Instagram">Instagram ↗</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms</a>
           </div>
           <p>© {new Date().getFullYear()} ZOROLIQ · Calgary, Alberta · Serving clients worldwide</p>
         </div>
